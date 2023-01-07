@@ -1,0 +1,55 @@
+jenkins:
+  numExecutors: 1
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  remotingSecurity:
+    enabled: false
+  securityRealm:
+    github:
+      githubWebUri: "https://github.com/${GITHUB_REPO_JOB_DSL}"
+      githubApiUri: "https://api.github.com/${GITHUB_REPO_JOB_DSL}"
+      clientID: "${GITHUB_ID}"
+      clientSecret: "${GITHUB_SECRET}"
+      oauthScopes: "read:org,user:email"
+unclassified:
+  location:
+    url: "${JENKINS_HOST}"
+security:
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: false
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: "github-token"
+              username: "${GITHUB_USERNAME}"
+              password: "${GITHUB_PASSWORD}"
+              description: "GitHub Token"
+
+jobs:
+  - script: >
+      pipelineJob('demo-job') {
+        definition {
+         triggers {
+            githubPush()
+            scm('* * * * *')
+
+          }
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            github('${GITHUB_REPO_JOB_DSL}')
+                            credentials('github-token')
+                        }
+                        branch('*/${GITHUB_BRANCH}')
+                    }
+                }
+                
+                lightweight()
+            }
+        }
+      }

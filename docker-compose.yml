@@ -1,0 +1,30 @@
+version: '3'
+services:
+  jenkins:
+    build: .
+    env_file:
+      - jenkins.env
+    volumes:
+      - ./config.yml:/var/jenkins_casc.yml
+    ports:
+      - "8080:8080"
+    depends_on: 
+      - ngrok
+  ngrok:
+    image: ngrok/ngrok:alpine
+    environment:
+        NGROK_AUTHTOKEN: '2Jv3CWhx6D2VesineBi5juuYJRH_574JYaRDuuooR33kFPfdv'
+    command: 'http jenkins:8080'        
+    ports:
+        - '4040:4040'
+    expose:
+        - '4040'
+  publish:
+    build: ./publish
+    env_file:
+    - jenkins.env
+    depends_on: 
+    - jenkins
+    - ngrok
+    network_mode: host
+    
