@@ -14,7 +14,7 @@ Change the github token in .env.tamplate.
 
 To spine up the application start the ./quickstart.sh file 
 It will start the docker compose building the Infra strcture
-A public url will be genrated by using Ngrok 
+A public url will be genrated by using Ngrok localhost:4040
 The URL will be sent via API call to update the repo webhook 
 The jq tool is needed to get Ngrok url
 
