@@ -1,4 +1,4 @@
-// a demo job for running scripts
+// a demo job for running scripts, can be added with requierment, tests and more 
 pipeline {
     agent any
     stages {
