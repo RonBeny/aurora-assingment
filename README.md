@@ -9,8 +9,9 @@ Jenkins global configuration, as well as the python demo job, are defined in `co
 
 The file `plugins.txt` lists the Jenkins plugins to install
 
-## Running the Container Locally
-Change the github token in .env.tamplate
+## Running the Containers
+Change the github token in .env.tamplate.
+
 To spine up the application start the ./quickstart.sh file 
 It will start the docker compose building the Infra strcture
 A public url will be genrated by using Ngrok 
@@ -20,7 +21,7 @@ The jq tool is needed to get Ngrok url
 ## storage and security
 
 The Jenkins instance has a variable the user should enter (for this example I kept it full)
-The GitHub tokan is very limited for security resons 
+The GitHub tokan is very limited for security resons and will be sent sepretly 
 in the future we could use a better way to pass the variables (secrets and such)
-I didn't had a chance of adding external storage with another container 
+I didn't had a time for adding external storage with another container.
 
