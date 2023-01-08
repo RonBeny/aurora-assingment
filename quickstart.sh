@@ -5,7 +5,6 @@ if [ ! -f ./jenkins.env ]; then
 fi
 
 
-docker-compose up -d
-
+docker-compose up
 
 

@@ -25,6 +25,5 @@ services:
     - jenkins.env
     depends_on: 
     - jenkins
-    - ngrok
     network_mode: host
     

@@ -1,6 +1,5 @@
 ansible
 ansicolor
-atlassian-jira-software-cloud
 configuration-as-code
 folder-properties
 github-branch-source
