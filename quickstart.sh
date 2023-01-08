@@ -5,7 +5,7 @@ if [ ! -f ./jenkins.env ]; then
   cp .env.template jenkins.env
 fi
 
-#run docker compose  
-docker-compose up 
+#run docker compose detached
+docker-compose up -d 
 
 
