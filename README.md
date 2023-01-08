@@ -10,7 +10,7 @@ Jenkins global configuration, as well as the python demo job, are defined in `co
 The file `plugins.txt` lists the Jenkins plugins to install
 
 ## Running the Container Locally
-
+Change the github token in .env.tamplate
 To spine up the application start the ./quickstart.sh file 
 It will start the docker compose building the Infra strcture
 A public url will be genrated by using Ngrok 
